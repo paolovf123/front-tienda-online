@@ -1,5 +1,6 @@
 import { Card } from "../../Components/Card";
 import { LayOut } from "../../Components/LayOut";
+import { ProductDetail } from "../../Components/ProductDetail";
 import React from "react";
 function fetchData(){
     const [items, setItems] = React.useState([])
@@ -24,7 +25,7 @@ function Home(){
                 })
             }
             </div>
-           
+           <ProductDetail/>
         </LayOut>
     );
 }
