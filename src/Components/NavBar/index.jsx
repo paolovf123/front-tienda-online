@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { ShoppingCatContext } from "../../Context";
+import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 import React from "react";
 const NavBar = () =>{
 
@@ -97,9 +98,9 @@ const NavBar = () =>{
                     className={({isActive})=>
                         isActive ? activeStyle:undefined
                     }>
-                    <button className="relative w-10 h-10">
-                        <span className="absolute w-4 h-4 m-0 text-center text-xs top-1 left-4 z-10 bg-emerald-500 rounded-full border items-center">{context.count}</span>
-                        <img className="absolute top-1 w-full h-full object-cover rounded-full" src="https://png.pngtree.com/png-clipart/20230915/original/pngtree-shop-cart-icon-symbol-simple-design-mall-icon-shopping-cart-vector-png-image_12176236.png"></img>
+                    <button className=" flex w-10 h-10 items-center justify-between">
+                        <ShoppingCartIcon className="w-6 h-6"> </ShoppingCartIcon>
+                        <span className=" w6 h-6">{context.count}</span>
                     </button>
                     </NavLink>
                 </li>
@@ -109,3 +110,4 @@ const NavBar = () =>{
 }
 
 export {NavBar};
+<img className="absolute top-1 w-full h-full object-cover rounded-full" src="https://png.pngtree.com/png-clipart/20230915/original/pngtree-shop-cart-icon-symbol-simple-design-mall-icon-shopping-cart-vector-png-image_12176236.png"></img>

@@ -10,11 +10,28 @@ import {SignIn} from '../Pages/SignIn';
 
 export const ShoppingCatContext = React.createContext();
 const ShoppingCatProvider=({children})=>{
+    //Contador del carrito de compra
     const [count,setCount] = React.useState(0);
+    //Abrir una sección para la información del producto
+    const [isProductDetailOpen,setIsProductDetailOpen]= React.useState(false);
+    //Ver la información del producto
+    const [productToShow,setProductToShow] = React.useState({});
+    //cambiar los para ver los valores del producto
+    const openProductDetail = ()=>{
+      setIsProductDetailOpen(true);
+    }
+    const closeProductDetail = ()=>{
+      setIsProductDetailOpen(false);
+    }
     return(
       <ShoppingCatContext.Provider value={{
         count,
-        setCount
+        setCount,
+        openProductDetail,
+        closeProductDetail,
+        isProductDetailOpen,
+        productToShow,
+        setProductToShow
       }}>
         {children}
       </ShoppingCatContext.Provider>

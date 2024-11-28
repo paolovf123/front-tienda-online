@@ -20,7 +20,7 @@ function Home(){
              {
                 items?.map((item)=>{
                     return(
-                        <Card key={item.id} title={item.title} price={item.price} category={item.category.name} image={item.images}/>
+                        <Card key={item.id} data={item}/>
                     );
                 })
             }
