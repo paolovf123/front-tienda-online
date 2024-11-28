@@ -110,4 +110,3 @@ const NavBar = () =>{
 }
 
 export {NavBar};
-<img className="absolute top-1 w-full h-full object-cover rounded-full" src="https://png.pngtree.com/png-clipart/20230915/original/pngtree-shop-cart-icon-symbol-simple-design-mall-icon-shopping-cart-vector-png-image_12176236.png"></img>
