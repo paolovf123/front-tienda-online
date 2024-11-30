@@ -12,16 +12,32 @@ export const ShoppingCatContext = React.createContext();
 const ShoppingCatProvider=({children})=>{
     //Contador del carrito de compra
     const [count,setCount] = React.useState(0);
-    //Abrir una sección para la información del producto
-    const [isProductDetailOpen,setIsProductDetailOpen]= React.useState(false);
+
+    
+    
     //Ver la información del producto
     const [productToShow,setProductToShow] = React.useState({});
-    //cambiar los para ver los valores del producto
+    //Abrir una sección para la información del producto
+    const [isProductDetailOpen,setIsProductDetailOpen]= React.useState(false);
+    //abrir o cerrar detalles de productos
     const openProductDetail = ()=>{
       setIsProductDetailOpen(true);
     }
     const closeProductDetail = ()=>{
       setIsProductDetailOpen(false);
+    }
+
+
+    //almacenar los datos de una card en el carrito
+    const [carProducts,setCarProducts] = React.useState([]);
+    //Abrir una sección para el checkOut de productos
+    const [isCheckOutOpen,setIsCheckOutOpen]= React.useState(false);
+    //abrir o cerrar checkout
+    const openCheckOut = ()=>{
+      setIsCheckOutOpen(true);
+    }
+    const closeCheckOut = ()=>{
+      setIsCheckOutOpen(false);
     }
     return(
       <ShoppingCatContext.Provider value={{
@@ -31,7 +47,12 @@ const ShoppingCatProvider=({children})=>{
         closeProductDetail,
         isProductDetailOpen,
         productToShow,
-        setProductToShow
+        setProductToShow,
+        setCarProducts,
+        carProducts,
+        openCheckOut,
+        closeCheckOut,
+        isCheckOutOpen,
       }}>
         {children}
       </ShoppingCatContext.Provider>

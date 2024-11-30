@@ -1,0 +1,9 @@
+.check-out-menu{
+    width: 400px;
+    height: calc( 60vh - 64px);
+    top: 65px;
+    overflow: auto; 
+    border: 1px solid;
+    position: absolute;
+    right: 0;
+}

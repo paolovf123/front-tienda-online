@@ -1,15 +1,19 @@
 import { NavLink } from "react-router-dom";
 import { ShoppingCatContext } from "../../Context";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
+import { CheckOutMenu } from "../CheckOutMenu";
 import React from "react";
 const NavBar = () =>{
 
     const activeStyle = 'underline underline-offset-4';
 
     const context = React.useContext(ShoppingCatContext);
-
+    const openCheck = ()=>{
+        context.openCheckOut();
+        context.closeProductDetail();
+    }
     return(
-        <nav className="flex justify-between items-center w-full z-10 top 0 py-3 px-6 font-light">
+        <nav className="bg-red-300 flex justify-between items-center w-full z-10 top 0 py-3 px-6 font-light">
             <ul className="flex items-center gap-4">
                 <li className="font-bold text-2xl">
                     <NavLink 
@@ -94,15 +98,12 @@ const NavBar = () =>{
                     </NavLink>
                 </li>
                 <li >
-                    <NavLink to='/my-order'
-                    className={({isActive})=>
-                        isActive ? activeStyle:undefined
-                    }>
-                    <button className=" flex w-10 h-10 items-center justify-between">
+                    <button onClick={()=>{
+                        openCheck()
+                    }} className=" flex w-10 h-10 items-center justify-between">
                         <ShoppingCartIcon className="w-6 h-6"> </ShoppingCartIcon>
                         <span className=" w6 h-6">{context.count}</span>
                     </button>
-                    </NavLink>
                 </li>
             </ul>
         </nav>
