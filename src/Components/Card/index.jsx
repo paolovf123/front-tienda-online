@@ -14,12 +14,12 @@ function Card({data}){
         context.setCarProducts([...context.carProducts,data]);
     }
     return(
-        <div className='bg-red-300 cursor-pointer w-70 h-90 rounded-xl items-center relative'>
-            <figure className='w-full h-5/6 relative mb-2 pb-0' 
+        <div className='flex flex-col bg-red-300 cursor-pointer w-60 h-75 rounded-xl items-center relative text-center'>
+            <figure className='flex w-60 h-60 relative mb-2 pb-0' 
             onClick={()=>{
             showProduct();
         }}>
-                <img className="w-full h-full rounded-t-xl object-cover" src={data.image}/>
+                <img className="w-full rounded-t-xl object-cover" src={data.image}/>
                 <span className="absolute text-sm text-gray-600  left-4 bottom-2 font-medium bg-slate-200 rounded-xl px-2">
                     {data.category}
                 </span>     
