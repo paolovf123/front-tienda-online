@@ -10,6 +10,7 @@ const OrderCard=({product})=>{
     function borrarProduct(id){
         const updatedProduct = products.filter((product) => product.id !== id);
         context.setCarProducts(updatedProduct)
+        context.setCount(context.count-1);
     }
     return(
         <div className='m-4 p-4 h-auto flex align-middle justify-between bg-green-300 items-center rounded-xl'>

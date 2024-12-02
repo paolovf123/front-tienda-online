@@ -1,4 +1,5 @@
 import './checkOut.css'
+import { NavLink } from "react-router-dom";
 import { XMarkIcon } from '@heroicons/react/24/solid';
 import React from 'react';
 import { ShoppingCatContext } from '../../Context'
@@ -7,7 +8,7 @@ import { TrashIcon } from '@heroicons/react/24/outline';
 import { OrderCard } from '../OrderCard';
 function CheckOutMenu(){
     const context = React.useContext(ShoppingCatContext);
-    
+    const activeStyle = 'underline underline-offset-4';
     const products = context.carProducts;
     let totalPagar = 0;
     function borrarProduct(id){
@@ -38,9 +39,17 @@ function CheckOutMenu(){
                 <span className='text-sm font-thin'>Total a pagar</span>
                 <span className='font-bold text-sm w-12'>${(totalPagar).toFixed(2)}</span>  
             </div>
-            <button className='pay-button w-40 h-10 bg-red-800 uppercase text-white font-bold letter tracking-wider cursor-pointer rounded-xl'> ir a pagar
-                
-                </button>
+            <NavLink to='/my-order'
+                className={({isActive})=>
+                    isActive ? activeStyle:undefined
+                }>
+                <button className='pay-button w-40 h-10 bg-red-800 uppercase text-white font-bold letter tracking-wider cursor-pointer rounded-xl' onClick={()=>{
+                    context.closeCheckOut();
+                }}> ir a pagar
+            
+            </button>
+            </NavLink>
+            
             </div>
             
         </aside>

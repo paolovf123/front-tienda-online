@@ -25,17 +25,17 @@ function Card({data}){
                 </span>     
             </figure>
             <PlusIcon className="h-6 w-6 absolute right-4 top-3 rounded-full text-gray-400 " onClick={()=>addProductToCar()}></PlusIcon>
-            <p className="flex text-sm align-middle justify-between text-center items-center" 
+        <p className="flex text-sm align-middle justify-between text-center items-center" 
             onClick={()=>{
             showProduct();
         }}>
-                    <span className="font-thin text-sm p-2 pt-0">
-                        {data.title}
-                    </span>
-                    <span className="p-2 pt-0">
-                        ${data.price}
-                    </span>
-                </p>
+            <span className="font-thin text-sm p-2 pt-0">
+                {data.title}
+            </span>
+            <span className="p-2 pt-0">
+                ${data.price}
+            </span>
+            </p>
         </div>
     );
 }
