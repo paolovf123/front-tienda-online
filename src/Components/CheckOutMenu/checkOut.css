@@ -1,10 +1,10 @@
 .check-out-menu{
     width: 400px;
-    height: calc( 60vh - 64px);
+    height: calc( auto - 64px);
     top: 64px;
-    overflow: auto; 
     border: 1px solid;
     position: absolute;
+    right: 0;
 }
 .pay-button{
     border: 1px solid rgba(255, 253, 253, 0);

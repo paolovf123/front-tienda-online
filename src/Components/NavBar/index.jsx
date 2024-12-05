@@ -1,13 +1,12 @@
 import { NavLink } from "react-router-dom";
 import { ShoppingCatContext } from "../../Context";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
-import { CheckOutMenu } from "../CheckOutMenu";
 import React from "react";
 const NavBar = () =>{
 
     const activeStyle = 'underline underline-offset-4';
-
     const context = React.useContext(ShoppingCatContext);
+    
     const openCheck = ()=>{
         context.openCheckOut();
         context.closeProductDetail();

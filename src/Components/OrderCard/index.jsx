@@ -7,17 +7,12 @@ const OrderCard=({product})=>{
     
     const products = context.carProducts;
 
-    function borrarProduct(id){
-        const updatedProduct = products.filter((product) => product.id !== id);
-        context.setCarProducts(updatedProduct)
-        context.setCount(context.count-1);
-    }
     return(
-        <div className='m-4 p-4 h-auto flex align-middle justify-between bg-green-300 items-center rounded-xl'>
+        <div className='m-2 p-2 h-auto flex align-middle justify-around items-center rounded-xl border border-black'>
             <img className="rounded-xl w-14 h-14 object-cover" src={product.image} alt="" />
-            <span className='text-sm font-thin w-32 h-auto'>{product.title}</span>
-            <TrashIcon className = "w-4 h-4 text-gray-400 cursor-pointer" onClick={()=>{
-                borrarProduct(product.id);
+            <span className='text-sm font-thin w-32 h-auto'>{(product.title).slice(0,30)}</span>
+            <TrashIcon className = "w-4 h-4 cursor-pointer" onClick={()=>{
+                context.borrarProduct(product.id,products);
             }}
             ></TrashIcon>
             <span className='font-bold text-sm w-12'>${product.price}</span>

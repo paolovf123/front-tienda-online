@@ -26,8 +26,14 @@ const ShoppingCatProvider=({children})=>{
     const closeProductDetail = ()=>{
       setIsProductDetailOpen(false);
     }
+    const [orders, setOrders] = React.useState([]);
 
 
+    function borrarProduct(id,products){
+      const updatedProduct = products.filter((product) => product.id !== id);
+      setCarProducts(updatedProduct)
+      setCount(count-1);
+  }
     //almacenar los datos de una card en el carrito
     const [carProducts,setCarProducts] = React.useState([]);
     //Abrir una sección para el checkOut de productos
@@ -53,6 +59,9 @@ const ShoppingCatProvider=({children})=>{
         openCheckOut,
         closeCheckOut,
         isCheckOutOpen,
+        borrarProduct,
+        orders,
+        setOrders
       }}>
         {children}
       </ShoppingCatContext.Provider>

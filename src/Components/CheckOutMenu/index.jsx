@@ -11,14 +11,10 @@ function CheckOutMenu(){
     const activeStyle = 'underline underline-offset-4';
     const products = context.carProducts;
     let totalPagar = 0;
-    function borrarProduct(id){
-        const updatedProduct = products.filter((product) => product.id !== id);
-        context.setCarProducts(updatedProduct)
-    }
     return(
-        <aside className={`${context.isCheckOutOpen ? 'flex' : 'hidden'} check-out-menu flex-col  right-0 bg-red-300 rounded-xl text-center`}>
+        <aside className={`${context.isCheckOutOpen ? 'flex' : 'hidden'} overflow-y-scroll check-out-menu flex-col  right-0 bg-red-50 border rounded-xl text-center`}>
             <div>
-                <div className='flex p-4 justify-between'>
+                <div className='flex p-4 justify-between w-full'>
                     <p>
                         Mis Pedidos
                     </p>
@@ -43,7 +39,7 @@ function CheckOutMenu(){
                 className={({isActive})=>
                     isActive ? activeStyle:undefined
                 }>
-                <button className='pay-button w-40 h-10 bg-red-800 uppercase text-white font-bold letter tracking-wider cursor-pointer rounded-xl' onClick={()=>{
+                <button className='m-4 mppay-button w-40 h-10 bg-black uppercase text-white font-bold letter tracking-wider cursor-pointer rounded-xl' onClick={()=>{
                     context.closeCheckOut();
                 }}> ir a pagar
             

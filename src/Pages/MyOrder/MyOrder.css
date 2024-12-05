@@ -1,6 +1,6 @@
 .my-order{
     width: 600px;
-    height: calc( 60vh - 64px);
+    height: calc( auto - 64px);
     top: 64px;
     overflow: auto; 
     border: 1px solid;

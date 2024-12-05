@@ -12,20 +12,21 @@ function ProductDetail(){
     const addProductToCar =()=>{
         context.setCount(context.count+1);
         context.setCarProducts([...context.carProducts,product]);
+        context.closeProductDetail();
     }
     return(
-        <aside className={`${context.isProductDetailOpen ? 'flex' : 'hidden'} product-detail flex-col fixed right-0 bg-slate-100 border border-black rounded-xl`}>
-            <div className='flex justify-between items-center p-4'>
+        <aside className={`${context.isProductDetailOpen ? 'flex' : 'hidden'} product-detail flex-col fixed right-0 bg-red-50 border border-black rounded-xl items-center`}>
+            <div className='w-full flex justify-between items-center p-4'>
                 <h2 className='font-medium text-xl '>
-                    Detalles
+                    Detalles del producto
                 </h2>
                 <XMarkIcon className="size-6 text-grey-500 cursor-pointer" onClick={()=>{
                     context.closeProductDetail();
                 }}></XMarkIcon>
             </div>
-            <div>
-                <img className="rounded-xl w-full object-cover" src={product.image} alt="" />
-                <p className='p-4 flex text-center align-middle justify-between'>
+            <div className='flex flex-col items-center'>
+                <img className="rounded-xl w-60 h-60 object-cover" src={product.image} alt="" />
+                <p className='p-4 flex items-center align-middle justify-between'>
                 <span className='text-xl'>{product.title}</span>
                 <span className='font-bold text-4xl'>${product.price}</span>
                 </p>
@@ -33,7 +34,7 @@ function ProductDetail(){
                     <span className='text-sm'>{product.description}</span>
                 </p>
             </div>
-            <button className= 'flex p-4 justify-around' onClick={()=>addProductToCar()}>
+            <button className= 'flex p-4 mb-4 rounded-xl justify-around border border-black w-64 h-14 items-center' onClick={()=>addProductToCar()}>
                 <p className='text-xl font-bold'>Agregar al carrito</p>
                 <ArrowRightCircleIcon className='w-8 h-8'></ArrowRightCircleIcon>
             </button>
