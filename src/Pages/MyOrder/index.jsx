@@ -19,6 +19,7 @@ function MyOrder () {
             products: products,
             total : products.length,
             totalPrice: (totalPagar).toFixed(2),
+            isPay: true
         }
         context.setOrders([...context.orders,orderToAdd]);
         context.setCarProducts([]);
@@ -53,13 +54,22 @@ function MyOrder () {
             </div>            
             </div>
             <NavLink to={'/'}>
-                <button className="flex align-center items-center justify-between p-4 mb-4 w-40 h-5 bg-black text-white rounded-lg" onClick={()=>{
+                <button className="flex align-center items-center justify-between p-4 m-4 w-40 h-5 bg-black text-white rounded-lg" onClick={()=>{
                         pagarPedido();
                     }
                     }>
                     <p className="font-thin text-xl">YAPEAR</p>
                     <CreditCardIcon className="w-6 h-6" ></CreditCardIcon>
                 </button>
+                <NavLink to={'/'}>
+                <button className="flex align-center items-center justify-between p-4 m-4 w-40 h-5 bg-black text-white rounded-lg" onClick={()=>{
+                        pagarPedido();
+                    }
+                    }>
+                    <p className="font-thin text-xl">WASAP</p>
+                    <CreditCardIcon className="w-6 h-6" ></CreditCardIcon>
+                </button>
+                </NavLink>
             </NavLink>
 
         </aside>

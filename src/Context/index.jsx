@@ -6,7 +6,7 @@ import { MyOrder } from '../Pages/MyOrder';
 import { MyOrders } from '../Pages/MyOrders';
 import { NotFound } from '../Pages/NotFound';
 import {SignIn} from '../Pages/SignIn';
-
+import {MySelection} from '../Pages/MySelection'
 
 export const ShoppingCatContext = React.createContext();
 const ShoppingCatProvider=({children})=>{
@@ -28,6 +28,7 @@ const ShoppingCatProvider=({children})=>{
     }
     const [orders, setOrders] = React.useState([]);
 
+    const [orderSelection,setOrderSelection] = React.useState({});
 
     function borrarProduct(id,products){
       const updatedProduct = products.filter((product) => product.id !== id);
@@ -61,7 +62,9 @@ const ShoppingCatProvider=({children})=>{
         isCheckOutOpen,
         borrarProduct,
         orders,
-        setOrders
+        setOrders,
+        orderSelection,
+        setOrderSelection
       }}>
         {children}
       </ShoppingCatContext.Provider>
@@ -95,6 +98,10 @@ const AppRoutes=()=>{
     {
       path: '/sing-in',
       element: <SignIn/>
+    },
+    {
+      path: '/my-selection',
+      element: <MySelection/>
     }
   ])
   return routes;
