@@ -4,13 +4,13 @@ import { ProductDetail } from "../../Components/ProductDetail";
 import { ShoppingCatContext } from "../../Context";
 import React from "react";
 
-function Home(){
+function Men(){
     const context = React.useContext(ShoppingCatContext);
     context.setItems(context.fetchData());
     const itemsFiltrados = context.itemsFiltrados;
     return(
         <LayOut>
-            <h1>Nuestros Productos</h1>
+            <h1>Ropa de Hombre!!</h1>
             <input type="text" placeholder="Busca un producto mano" className="w-1/3 border border-black text-center rounded-lg text-2xl font-thin" onChange={(e)=>{
                 context.setBuscandoProducto(e.target.value);
             }}/>
@@ -28,4 +28,4 @@ function Home(){
     );
 }
 
-export{Home}
+export{Men}

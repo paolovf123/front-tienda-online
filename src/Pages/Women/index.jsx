@@ -4,7 +4,7 @@ import { ProductDetail } from "../../Components/ProductDetail";
 import { ShoppingCatContext } from "../../Context";
 import React from "react";
 
-function Home(){
+function Women(){
     const context = React.useContext(ShoppingCatContext);
     context.setItems(context.fetchData());
     const itemsFiltrados = context.itemsFiltrados;
@@ -28,4 +28,4 @@ function Home(){
     );
 }
 
-export{Home}
+export{Women}

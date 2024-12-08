@@ -1,13 +1,12 @@
-import { LayOut } from "../../Components/LayOut"
-import '../../Components/CheckOutMenu/checkOut.css'
-import { XMarkIcon } from '@heroicons/react/24/solid';
+import { LayOut } from "../../Components/LayOut";
+import '../../Components/CheckOutMenu/checkOut.css';
 import React from 'react';
-import './MyOrder.css'
+import './MyOrder.css';
 import { NavLink } from "react-router-dom";
-import { ShoppingCatContext } from '../../Context'
+import { ShoppingCatContext } from '../../Context';
 import { CurrencyDollarIcon } from '@heroicons/react/24/outline';
 import { SelectionCard } from '../../Components/SelectionCard';
-
+import { ChevronLeftIcon } from "@heroicons/react/24/outline";
 function MySelection(){
     const context = React.useContext(ShoppingCatContext);
     const products = context.carProducts;
@@ -22,10 +21,8 @@ function MySelection(){
                     </p>
 
                     <NavLink to={'/my-orders'}>
-                        <XMarkIcon className="size-6 text-grey-500 cursor-pointer" onClick={()=>{
-                            context.setCarProducts([]);
-                        }}>
-                        </XMarkIcon>
+                        <ChevronLeftIcon className="size-8 text-grey-500 cursor-pointer">
+                        </ChevronLeftIcon>
                     </NavLink>
                 </div>
             {products ?.map((product)=>{

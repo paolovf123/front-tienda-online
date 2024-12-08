@@ -2,12 +2,13 @@ import { LayOut } from "../../Components/LayOut";
 import React from "react";
 import { ShoppingCatContext } from "../../Context";
 import { NavLink } from "react-router-dom";
+import { ChevronRightIcon } from "@heroicons/react/24/outline";
 function MyOrders () {
     const context = React.useContext(ShoppingCatContext);
     const orders = context.orders;
     return(
         <LayOut>
-            <ul className="w-8/12 h-auto rounded-xl border border-black items-center flex flex-col">
+            <ul className="w-1/2 h-auto rounded-xl border border-black items-center flex flex-col">
             <h1>Lista de Pedidos</h1>
             <div className="w-full flex justify-around text-xl font-thin border border-t-black border-b-black border-l-0 border-r-0 p-4"> 
                 <p className="w-60 text-center">Fecha de compra</p>
@@ -21,10 +22,12 @@ function MyOrders () {
                             <li key={order.date} className="flex text-xl font-thin items-center justify-around w-full p-4 pointer-hover" onClick={()=>{
                             context.setCarProducts(order.products);
                         }}>
-                                <div className="w-60 text-center">{(order.date).slice(0,9)}</div>
+                                <div className="w-60 text-center flex items-center justify-center">
+                                <ChevronRightIcon className="w-8 h-8"></ChevronRightIcon>{(order.date).slice(0,9)}</div>
                                 <div className="w-60 text-center">{(order.date).slice(10,19)}</div>
                                 <div className="w-60 text-center">{order.total}</div>
                                 <div className="w-60 text-center">{order.totalPrice}</div>
+                                
                             </li>
                         </NavLink> 
                         

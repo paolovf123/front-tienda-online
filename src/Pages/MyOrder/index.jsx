@@ -8,7 +8,7 @@ import { ShoppingCatContext } from '../../Context'
 import { CurrencyDollarIcon } from '@heroicons/react/24/outline';
 import { OrderCard } from '../../Components/OrderCard';
 import { CreditCardIcon } from "@heroicons/react/24/outline";
-
+import { Link } from "react-router-dom";
 function MyOrder () {
     const context = React.useContext(ShoppingCatContext);
     const products = context.carProducts;
@@ -19,7 +19,6 @@ function MyOrder () {
             products: products,
             total : products.length,
             totalPrice: (totalPagar).toFixed(2),
-            isPay: true
         }
         context.setOrders([...context.orders,orderToAdd]);
         context.setCarProducts([]);
@@ -61,7 +60,9 @@ function MyOrder () {
                     <p className="font-thin text-xl">YAPEAR</p>
                     <CreditCardIcon className="w-6 h-6" ></CreditCardIcon>
                 </button>
-                <NavLink to={'/'}>
+                </NavLink>
+
+                <Link to={'https://wa.me/51900688498'}>
                 <button className="flex align-center items-center justify-between p-4 m-4 w-40 h-5 bg-black text-white rounded-lg" onClick={()=>{
                         pagarPedido();
                     }
@@ -69,9 +70,8 @@ function MyOrder () {
                     <p className="font-thin text-xl">WASAP</p>
                     <CreditCardIcon className="w-6 h-6" ></CreditCardIcon>
                 </button>
-                </NavLink>
-            </NavLink>
-
+                </Link>
+            
         </aside>
 
         </LayOut>

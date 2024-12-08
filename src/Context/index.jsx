@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useRoutes, BrowserRouter} from 'react-router-dom';
 import { Home } from '../Pages/Home';
 import { MyAccount } from '../Pages/MyAccount';
@@ -7,13 +7,50 @@ import { MyOrders } from '../Pages/MyOrders';
 import { NotFound } from '../Pages/NotFound';
 import {SignIn} from '../Pages/SignIn';
 import {MySelection} from '../Pages/MySelection'
-
+import { Electronics } from "../Pages/Electronics";
+import { Men } from "../Pages/Men";
+import {Women} from "../Pages/Women";
 export const ShoppingCatContext = React.createContext();
 const ShoppingCatProvider=({children})=>{
+    //Cargando data
+    const [items, setItems] = React.useState([]);
+    
+    function fetchData(){
+      React.useEffect(()=>{
+        fetch('https://fakestoreapi.com/products')
+        .then(response =>response.json())
+        .then(data=>setItems(data))
+      },[])
+      return items;
+    }
+    //items por categoria
+    const [categoriaItem, setCatergoriaItem]= React.useState([]);
+    //categoria de los items
+    const [categoria, setCategoria] = React.useState("");
+    //Buscando data por nombre
+    const [buscandoProducto,setBuscandoProducto] = React.useState("");
+    //Productos buscados
+    const [itemsFiltrados,setItemsFiltrados] = React.useState([]);
+    const filtrarProducto=(items,buscandoProducto)=>{
+      return items.filter(item=>(item.title.toLowerCase()).includes(buscandoProducto.toLowerCase()))
+    }
+    const filtrarCategoria=(items,categoria)=>{
+      return items.filter(item=>(item.category.toLowerCase())===(categoria.toLowerCase()))
+    }
+    React.useEffect(()=>{
+      categoria
+      ?setCatergoriaItem(filtrarCategoria(items,categoria))
+      :setCatergoriaItem(items)
+    },[items,categoria])
+
+    React.useEffect(()=>{
+      buscandoProducto
+      ?setItemsFiltrados(filtrarProducto(categoriaItem,buscandoProducto))
+      :setItemsFiltrados(categoriaItem)
+    },[categoriaItem,buscandoProducto])
+    console.log(categoriaItem);
     //Contador del carrito de compra
     const [count,setCount] = React.useState(0);
-
-    
     
     //Ver la información del producto
     const [productToShow,setProductToShow] = React.useState({});
@@ -64,7 +101,18 @@ const ShoppingCatProvider=({children})=>{
         orders,
         setOrders,
         orderSelection,
-        setOrderSelection
+        setOrderSelection,
+        items,
+        setItems,
+        fetchData,
+        buscandoProducto,
+        setBuscandoProducto,
+        itemsFiltrados,
+        setItemsFiltrados,
+        categoria,
+        setCategoria,
+        categoriaItem,
+        setCatergoriaItem
       }}>
         {children}
       </ShoppingCatContext.Provider>
@@ -96,12 +144,24 @@ const AppRoutes=()=>{
       element: <NotFound/>
     },
     {
-      path: '/sing-in',
+      path: '/sign-in',
       element: <SignIn/>
     },
     {
       path: '/my-selection',
       element: <MySelection/>
+    },
+    {
+      path:'/electronics',
+      element: <Electronics/>
+    },
+    {
+      path:'/men',
+      element: <Men/>
+    },
+    {
+      path:'/women',
+      element: <Women/>
     }
   ])
   return routes;

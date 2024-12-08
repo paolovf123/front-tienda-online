@@ -20,51 +20,47 @@ const NavBar = () =>{
                      className={({isActive})=>
                         isActive ? activeStyle:undefined
                     }
+                    onClick={()=>{
+                        context.setCategoria("");
+                    }}
                     >
                         gatify
                     </NavLink>
                 </li>
                 <li>
                     <NavLink 
-                    to='/quienes-somos'
+                    to='/electronics'
+                    className={({isActive})=>
+                        isActive ? activeStyle:undefined
+                    } onClick={()=>{
+                        context.setCategoria("electronics")
+                    }
+                    }
+                    >
+                        Electronic
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink to='/women'
                     className={({isActive})=>
                         isActive ? activeStyle:undefined
                     }
+                    onClick={()=>{
+                        context.setCategoria("women's clothing")
+                    }}
                     >
-                        quienes somos
+                        Mujer
                     </NavLink>
                 </li>
                 <li>
                     <NavLink 
-                    to='/adoptar'
+                    to='/men'
                     className={({isActive})=>
                         isActive ? activeStyle:undefined
-                    }>
-                        adoptar
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink to='/comida'
-                    className={({isActive})=>
-                        isActive ? activeStyle:undefined
-                    }>
-                        comida
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink to='/ropa'
-                    className={({isActive})=>
-                        isActive ? activeStyle:undefined
-                    }>
-                        ropa
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink to='/dar-en-adopcion'
-                    className={({isActive})=>
-                        isActive ? activeStyle:undefined
-                    }>
-                        dar en adopción
+                    } onClick={()=>{
+                        context.setCategoria("men's clothing")
+                    }}>
+                        Varon
                     </NavLink>
                 </li>
             </ul>
