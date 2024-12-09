@@ -1,6 +1,5 @@
 .product-detail{
-    width: 360px;
-    height: calc(90vh - 64px);
+    height: calc(80vh - 64px);
     top: 64px;
     overflow: auto; 
 }

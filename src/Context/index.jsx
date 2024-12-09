@@ -12,17 +12,32 @@ import { Men } from "../Pages/Men";
 import {Women} from "../Pages/Women";
 export const ShoppingCatContext = React.createContext();
 const ShoppingCatProvider=({children})=>{
+    //Loading
+    const[loading,setLoading] = React.useState(true);
     //Cargando data
     const [items, setItems] = React.useState([]);
-    
+
     function fetchData(){
       React.useEffect(()=>{
         fetch('https://fakestoreapi.com/products')
         .then(response =>response.json())
         .then(data=>setItems(data))
-      },[])
+      }
+      ,[])
       return items;
     }
+    fetchData();
+    //Para ver la ancho de la pantalla
+    const [isMobile, setIsMobile] = React.useState(false);
+    const cambiarPantalla=()=>{
+      setIsMobile(window.innerWidth < 600);
+    }
+    React.useEffect(()=>{
+      cambiarPantalla();
+      window.addEventListener('resize', cambiarPantalla);
+      window.removeEventListener('resize', cambiarPantalla);
+    },[])
+
     //items por categoria
     const [categoriaItem, setCatergoriaItem]= React.useState([]);
     //categoria de los items
@@ -41,6 +56,11 @@ const ShoppingCatProvider=({children})=>{
       categoria
       ?setCatergoriaItem(filtrarCategoria(items,categoria))
       :setCatergoriaItem(items)
+
+      const timer = setTimeout(() => {
+        setLoading(false);
+      }, 1000);
+      return () => clearTimeout(timer);
     },[items,categoria])
 
     React.useEffect(()=>{
@@ -48,7 +68,6 @@ const ShoppingCatProvider=({children})=>{
       ?setItemsFiltrados(filtrarProducto(categoriaItem,buscandoProducto))
       :setItemsFiltrados(categoriaItem)
     },[categoriaItem,buscandoProducto])
-    console.log(categoriaItem);
     //Contador del carrito de compra
     const [count,setCount] = React.useState(0);
     
@@ -112,7 +131,11 @@ const ShoppingCatProvider=({children})=>{
         categoria,
         setCategoria,
         categoriaItem,
-        setCatergoriaItem
+        setCatergoriaItem,
+        isMobile,
+        setIsMobile,
+        loading,
+        setLoading
       }}>
         {children}
       </ShoppingCatContext.Provider>

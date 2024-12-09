@@ -35,9 +35,11 @@ function Card({data}){
             showProduct();
         }}>
                 <img className="w-full rounded-t-xl object-cover" src={data.image}/>
-                <span className="absolute text-sm text-gray-600  left-4 bottom-2 font-medium bg-slate-200 rounded-xl px-2">
+                <button className="absolute text-sm text-gray-600  left-4 bottom-2 font-medium bg-slate-200 rounded-xl px-2" onClick={()=>{
+                    context.setCategoria(data.category);
+                }}>
                     {data.category}
-                </span>     
+                </button>     
             </figure>
             {renderIcon(data.id)}
         <p className="flex text-sm align-middle justify-between text-center items-center" 

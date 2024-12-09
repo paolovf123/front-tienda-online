@@ -18,7 +18,7 @@ function MyOrders () {
             </div>
                 {orders?.map((order)=>{
                     return(
-                        <NavLink to='/my-selection' className="w-full">
+                        <NavLink to='/my-selection' className="w-full" key={order.date}>
                             <li key={order.date} className="flex text-xl font-thin items-center justify-around w-full p-4 pointer-hover" onClick={()=>{
                             context.setCarProducts(order.products);
                         }}>
@@ -27,7 +27,6 @@ function MyOrders () {
                                 <div className="w-60 text-center">{(order.date).slice(10,19)}</div>
                                 <div className="w-60 text-center">{order.total}</div>
                                 <div className="w-60 text-center">{order.totalPrice}</div>
-                                
                             </li>
                         </NavLink> 
                         

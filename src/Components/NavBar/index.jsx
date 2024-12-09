@@ -12,7 +12,46 @@ const NavBar = () =>{
         context.closeProductDetail();
     }
     return(
-        <nav className="bg-red-300 flex justify-between items-center w-full z-10 top 0 py-3 px-6 font-light">
+        <>
+        {context.isMobile
+            ?
+            <nav className="bg-red-300 flex justify-between items-center w-full z-10 top 0 py-3 px-6 font-light">
+            <ul className="flex items-center gap-4">
+                <li className="font-bold text-2xl">
+                    <NavLink 
+                     to='/'
+                     className={({isActive})=>
+                        isActive ? activeStyle:undefined
+                    }
+                    onClick={()=>{
+                        context.setCategoria("");
+                    }}
+                    >
+                        gatify
+                    </NavLink>
+                </li>
+            </ul>
+            <ul className="flex items-center gap-4">
+                <li>
+                    <NavLink to='/my-orders'
+                    className={({isActive})=>
+                        isActive ? activeStyle:undefined
+                    }>
+                        Mis Ordenes
+                    </NavLink>
+                </li>                
+                <li >
+                    <button onClick={()=>{
+                        openCheck()
+                    }} className=" flex w-10 h-10 items-center justify-between">
+                        <ShoppingCartIcon className="w-6 h-6"> </ShoppingCartIcon>
+                        <span className=" w6 h-6">{context.count}</span>
+                    </button>
+                </li>
+            </ul>
+        </nav>
+            :
+            <nav className="bg-red-300 flex justify-between items-center w-full z-10 top 0 py-3 px-6 font-light">
             <ul className="flex items-center gap-4">
                 <li className="font-bold text-2xl">
                     <NavLink 
@@ -65,9 +104,6 @@ const NavBar = () =>{
                 </li>
             </ul>
             <ul className="flex items-center gap-4">
-                <li className="text-black/65">
-                    correodelusuario@sadas.com
-                </li>
                 <li>
                     <NavLink to='/my-orders'
                     className={({isActive})=>
@@ -102,6 +138,8 @@ const NavBar = () =>{
                 </li>
             </ul>
         </nav>
+        }
+        </>
     );
 }
 
