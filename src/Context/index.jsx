@@ -17,6 +17,7 @@ const ShoppingCatProvider=({children})=>{
     const [usuarios,setUsuarios] = React.useState(JSON.parse(localStorage.getItem('usuarios')));
     //email temporal
     const [email,setEmail] = React.useState("");
+    const [emailError,setEmailError] = React.useState(false);
     //contraseña temporal
     const [password,setPassword] = React.useState("");
     //Loading
@@ -149,6 +150,8 @@ const ShoppingCatProvider=({children})=>{
         setEmail,
         password,
         setPassword,
+        emailError,
+        setEmailError
       }}>
         {children}
       </ShoppingCatContext.Provider>

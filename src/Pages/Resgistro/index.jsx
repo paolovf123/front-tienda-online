@@ -10,7 +10,13 @@ function Registro(){
         context.setEmail("");
         context.setPassword("");
     }
-    console.log(context.usuarios)
+    const patronEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+    const emailValido=(email)=>{
+            patronEmail.test(email)
+            ?context.setEmail(email)
+            :context.setEmailError(true)
+        }
     return(
        <LayOut>
         {
@@ -19,12 +25,12 @@ function Registro(){
                 <div className="flex flex-col items-center w-full h-screen">
                     <h1 className="p-4">Registrar cuenta</h1>
                     <div className="flex flex-col w-full items-center">
-                        <p className="text-lg font-thin left-0 text-gray-500">Email:</p>
-                        <input type="text" placeholder="TU CORREO" className="m-4 mt-1 border text-black border-black w-4/5 text-center text-base font-semibold rounded-md h-8"/>
+                        <p className="text-lg font-thin left-0 text-gray-500">Ingrese su email:</p>
+                        <input type="text" placeholder="TU CORREO" className="m-4 mt-1 border text-black border-black w-4/5 text-center text-base font-semibold rounded-md h-8" required/>
                     </div>
                     <div className="flex flex-col w-full items-center">
-                        <p className="text-lg font-thin left-0 text-gray-500">Contraseña:</p>
-                        <input type="password" placeholder="****************" className="m-4 mt-1 border border-black w-4/5 text-center text-base font-thinrounded-xl h-8 rounded-md"/>
+                        <p className="text-lg font-thin left-0 text-gray-500">Ingrese su contraseña:</p>
+                        <input type="password" placeholder="****************" className="m-4 mt-1 border border-black w-4/5 text-center text-base font-thinrounded-xl h-8 rounded-md"required/>
                     </div>
                     <button className="mt-4 w-4/5 bg-black rounded-md text-white font-thin text-lg h-14">
                         Registrar
@@ -35,26 +41,34 @@ function Registro(){
                 <div className="flex flex-col items-center w-full h-screen">
                     <h1 className="p-4">Registrar cuenta</h1>
                     <div className="flex flex-col w-full items-center">
-                        <p className="text-lg font-thin left-0 text-gray-500">Email:</p>
-                        <input type="text" placeholder="TU CORREO" className="m-4 mt-1 border text-black border-black w-1/5 text-center text-base font-semibold rounded-md h-8" 
+                        <p className="text-lg font-thin left-0 text-gray-500">Ingrese su email:</p>
+                        <input type="text" placeholder={`${context.emailError? 'Ingresa un correo valido' : 'ejemplodecorreo@dominio.com'}`} className="m-4 mt-1 border text-black border-black w-1/5 text-center text-base font-semibold rounded-md h-8" 
                         onChange={(e)=>{
-                        context.setEmail(e.target.value);
+                        e?emailValido(e.target.value)
+                        :none
                         }}/>
                     </div>
                     <div className="flex flex-col w-full items-center">
-                        <p className="text-lg font-thin left-0 text-gray-500">Contraseña:</p>
+                        <p className="text-lg font-thin left-0 text-gray-500">Ingrese su contraseña:</p>
                         <input type="password" placeholder="****************" className="m-4 mt-1 border border-black w-1/5 text-center text-base font-thinrounded-xl h-8 rounded-md"
                         onChange={(e)=>{
-                            context.setPassword(e.target.value);
+                            e?context.setPassword(e.target.value)
+                            : none
                         }}/>
                     </div>
-                    <button className="mt-4 w-1/5 bg-black rounded-md text-white font-thin text-lg h-14" onClick={()=>{
-                        registrarUsuario(context.email,context.password);
-                    }}>
-                        <NavLink to='/'>
-                        Registrar
-                        </NavLink>
-                    </button>
+                    <NavLink to='/' className="mt-4 w-1/5  h-14" >
+                        <button className="w-full h-full bg-black rounded-md text-white font-thin text-lg" onClick={()=>{
+                            if(context.email == ""){
+
+                            }else if(context.password == ""){
+
+                            }else{
+                                registrarUsuario(context.email,context.password)
+                            }
+                        }}>
+                            Registrar
+                        </button>
+                    </NavLink>
                 </div>
             </>
         }
