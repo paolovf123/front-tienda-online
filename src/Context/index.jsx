@@ -14,12 +14,19 @@ import { Registro } from "../Pages/Resgistro";
 export const ShoppingCatContext = React.createContext();
 const ShoppingCatProvider=({children})=>{
     //usuarios
-    const [usuarios,setUsuarios] = React.useState([]);
+    const [usuarios,setUsuarios] = React.useState(JSON.parse(localStorage.getItem('usuarios')));
+    //email temporal
+    const [email,setEmail] = React.useState("");
+    //contraseña temporal
+    const [password,setPassword] = React.useState("");
     //Loading
     const[loading,setLoading] = React.useState(true);
     //Cargando data
     const [items, setItems] = React.useState([]);
 
+    React.useEffect(()=>{
+        localStorage.setItem('usuarios',JSON.stringify(usuarios));
+      },[usuarios]);
     function fetchData(){
       React.useEffect(()=>{
         fetch('https://fakestoreapi.com/products')
@@ -137,7 +144,11 @@ const ShoppingCatProvider=({children})=>{
         loading,
         setLoading,
         usuarios,
-        setUsuarios
+        setUsuarios,
+        email,
+        setEmail,
+        password,
+        setPassword,
       }}>
         {children}
       </ShoppingCatContext.Provider>

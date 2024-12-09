@@ -1,9 +1,16 @@
 import React from "react"
 import { LayOut } from "../../Components/LayOut"
 import { ShoppingCatContext } from "../../Context"
+import { NavLink } from "react-router-dom";
 
 function Registro(){
     const context= React.useContext(ShoppingCatContext);
+    const registrarUsuario=(email,password)=>{
+        context.setUsuarios([...context.usuarios,{email:email, password:password}]);
+        context.setEmail("");
+        context.setPassword("");
+    }
+    console.log(context.usuarios)
     return(
        <LayOut>
         {
@@ -26,17 +33,27 @@ function Registro(){
 
             :<>
                 <div className="flex flex-col items-center w-full h-screen">
-                    <h1 className="p-4">Iniciar Sesión</h1>
+                    <h1 className="p-4">Registrar cuenta</h1>
                     <div className="flex flex-col w-full items-center">
                         <p className="text-lg font-thin left-0 text-gray-500">Email:</p>
-                        <input type="text" placeholder="TU CORREO" className="m-4 mt-1 border text-black border-black w-1/5 text-center text-base font-semibold rounded-md h-8"/>
+                        <input type="text" placeholder="TU CORREO" className="m-4 mt-1 border text-black border-black w-1/5 text-center text-base font-semibold rounded-md h-8" 
+                        onChange={(e)=>{
+                        context.setEmail(e.target.value);
+                        }}/>
                     </div>
                     <div className="flex flex-col w-full items-center">
                         <p className="text-lg font-thin left-0 text-gray-500">Contraseña:</p>
-                        <input type="password" placeholder="****************" className="m-4 mt-1 border border-black w-1/5 text-center text-base font-thinrounded-xl h-8 rounded-md"/>
+                        <input type="password" placeholder="****************" className="m-4 mt-1 border border-black w-1/5 text-center text-base font-thinrounded-xl h-8 rounded-md"
+                        onChange={(e)=>{
+                            context.setPassword(e.target.value);
+                        }}/>
                     </div>
-                    <button className="mt-4 w-1/5 bg-black rounded-md text-white font-thin text-lg h-14">
+                    <button className="mt-4 w-1/5 bg-black rounded-md text-white font-thin text-lg h-14" onClick={()=>{
+                        registrarUsuario(context.email,context.password);
+                    }}>
+                        <NavLink to='/'>
                         Registrar
+                        </NavLink>
                     </button>
                 </div>
             </>
