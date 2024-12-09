@@ -12,7 +12,7 @@ function Home(){
             {
                 context.isMobile
                 ?context.loading
-                    ?   <img src="https://img.pikbest.com/ai/illus_our/20230422/4e876aac6fbe443ad142c1634814f00d.jpg!w700wp" alt=""  className="flex items-center align-middle w-full object-contain top-0"/>
+                    ?   <img src="https://img.pikbest.com/ai/illus_our/20230422/4e876aac6fbe443ad142c1634814f00d.jpg!w700wp" className="flex items-center object-cover"/>
                     :
                         <>
                         <h1>Nuestros Productos</h1>

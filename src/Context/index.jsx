@@ -10,8 +10,11 @@ import {MySelection} from '../Pages/MySelection'
 import { Electronics } from "../Pages/Electronics";
 import { Men } from "../Pages/Men";
 import {Women} from "../Pages/Women";
+import { Registro } from "../Pages/Resgistro";
 export const ShoppingCatContext = React.createContext();
 const ShoppingCatProvider=({children})=>{
+    //usuarios
+    const [usuarios,setUsuarios] = React.useState([]);
     //Loading
     const[loading,setLoading] = React.useState(true);
     //Cargando data
@@ -22,6 +25,8 @@ const ShoppingCatProvider=({children})=>{
         fetch('https://fakestoreapi.com/products')
         .then(response =>response.json())
         .then(data=>setItems(data))
+
+        setLoading(false);
       }
       ,[])
       return items;
@@ -56,11 +61,6 @@ const ShoppingCatProvider=({children})=>{
       categoria
       ?setCatergoriaItem(filtrarCategoria(items,categoria))
       :setCatergoriaItem(items)
-
-      const timer = setTimeout(() => {
-        setLoading(false);
-      }, 1000);
-      return () => clearTimeout(timer);
     },[items,categoria])
 
     React.useEffect(()=>{
@@ -135,7 +135,9 @@ const ShoppingCatProvider=({children})=>{
         isMobile,
         setIsMobile,
         loading,
-        setLoading
+        setLoading,
+        usuarios,
+        setUsuarios
       }}>
         {children}
       </ShoppingCatContext.Provider>
@@ -185,6 +187,10 @@ const AppRoutes=()=>{
     {
       path:'/women',
       element: <Women/>
+    },
+    {
+      path:'/registrar',
+      element: <Registro/>
     }
   ])
   return routes;

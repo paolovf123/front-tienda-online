@@ -1,8 +1,8 @@
 import React from "react"
 import { LayOut } from "../../Components/LayOut"
 import { ShoppingCatContext } from "../../Context"
-import { Link } from "react-router-dom";
-function SignIn(){
+
+function Registro(){
     const context= React.useContext(ShoppingCatContext);
     return(
        <LayOut>
@@ -10,7 +10,7 @@ function SignIn(){
             context.isMobile
             ?
                 <div className="flex flex-col items-center w-full h-screen">
-                    <h1 className="p-4">Iniciar Sesión</h1>
+                    <h1 className="p-4">Registrar cuenta</h1>
                     <div className="flex flex-col w-full items-center">
                         <p className="text-lg font-thin left-0 text-gray-500">Email:</p>
                         <input type="text" placeholder="TU CORREO" className="m-4 mt-1 border text-black border-black w-4/5 text-center text-base font-semibold rounded-md h-8"/>
@@ -20,13 +20,7 @@ function SignIn(){
                         <input type="password" placeholder="****************" className="m-4 mt-1 border border-black w-4/5 text-center text-base font-thinrounded-xl h-8 rounded-md"/>
                     </div>
                     <button className="mt-4 w-4/5 bg-black rounded-md text-white font-thin text-lg h-14">
-                        Ingresar
-                    </button>
-                    <button className="mt-4 text-base font-medium text-gray-500">
-                        Olvide mi constraseña
-                    </button>
-                    <button className="mt-4 w-4/5 rounded-md text-gray-500 border border-gray-500 font-thin text-lg h-14">
-                        Registrate
+                        Registrar
                     </button>
                 </div>
 
@@ -42,20 +36,12 @@ function SignIn(){
                         <input type="password" placeholder="****************" className="m-4 mt-1 border border-black w-1/5 text-center text-base font-thinrounded-xl h-8 rounded-md"/>
                     </div>
                     <button className="mt-4 w-1/5 bg-black rounded-md text-white font-thin text-lg h-14">
-                        Ingresar
+                        Registrar
                     </button>
-                    <button className="mt-1 text-base font-medium text-gray-500">
-                        Olvide mi constraseña
-                    </button>
-                    <Link to='/registrar' className="w-1/5 h-14">
-                        <button className="mt-4 w-full rounded-md text-gray-500 border border-gray-500 font-thin text-lg h-full">
-                            Registrarme
-                        </button>
-                    </Link>
                 </div>
             </>
         }
        </LayOut>
     )
 }
-export {SignIn}
+export {Registro}
